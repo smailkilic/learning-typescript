@@ -1,3 +1,6 @@
+// npm run typescript 
+// npm run nodemon
+
 /*
 Javascript Nedir ?
 
@@ -83,6 +86,7 @@ function staticDataTypes() {
     // const data5:number;
     // console.log(data5);
 }
+
 //staticDataTypes()
 
 
@@ -130,66 +134,103 @@ let tsArray = () => {
     //array[5] = 23;
     //console.log(array[array.length - 1]);
 
-    let array2: number[]   = [1, 2, 9, 5, 3];
-    let array3 :string[]   = ["İstanbul","Ankara","Adana"]
-    let array4 :boolean[]  = [3>1, 44<1,true]
-    let array5 :any[]      = [44,"str",true]
+    let array2: number[] = [1, 2, 9, 5, 3];
+    let array3: string[] = ["İstanbul", "Ankara", "Adana"]
+    let array4: boolean[] = [3 > 1, 44 < 1, true]
+    let array5: any[] = [44, "str", true]
 
     // tuple: Veri olarak birden fazla datatypes tek bir bileşende göstermek için kullanıyoruz.
-    let tuple1 :[number,string]=[1,"Adana"];
-    let result=`${tuple1[0]} => ${tuple1[1]}`
-    console.log(result );
-    tuple1.push(2,"Adıyaman");
-    tuple1.push(3,"Afyon");
-    tuple1.push(4,"Bolu");
-    tuple1.push(5,"Amasya");
-    tuple1.forEach((temp)=>{
+    let tuple1: [number, string] = [1, "Adana"];
+    let result = `${tuple1[0]} => ${tuple1[1]}`
+    console.log(result);
+    tuple1.push(2, "Adıyaman");
+    tuple1.push(3, "Afyon");
+    tuple1.push(4, "Bolu");
+    tuple1.push(5, "Amasya");
+    tuple1.forEach((temp) => {
         console.log(`${temp}`)
     });
 
-    let tuple2 :[number,string,boolean]=[44,"str",true];
+    let tuple2: [number, string, boolean] = [44, "str", true];
 }
 //tsArray()
 
+// number,string,boolean,any
+// #### OBJECT  #################################################
+let tsObject = () => {
+    // TypeScript Object 
+    console.log("TypeScript Object");
+
+    // Normal object
+    // let computer={
+    //     computerName:"Msi Titan",
+    //     trade:"msi",
+    //     year:"2024"
+    // }
+
+    let computer: {
+        computerName: string,
+        trade: string,
+        year: number,
+        newVersion: boolean
+
+    } = {
+        computerName: "Msi Titan",
+        trade: "msi",
+        year: 2024,
+        newVersion: true
+    }
+    console.log(computer.computerName);
+    console.log(computer.trade);
+    console.log(computer.year);
+    console.log(computer.newVersion);
+
+}
+//tsObject();
 
 // #### FUNCTIONS #################################################
 // TypeScript Fonksiyonlar
 // void: dönüşü olmayan (Yani işlem sonunda bana birşey döndermee)
-function tsFunction(x,y,z){
+/*function tsFunction(x,y,z){
     console.log(`Normal: ${x} ${y} ${z}`); 
 }
-tsFunction(4,10,99);
+tsFunction(4,10,99);*/
 
-function tsFunction2(x:number,y:number,z:string){
-    console.log(`TS Function2: ${x} ${y} ${z}`); 
+function tsFunction2(x: number, y: number, z: string) {
+    console.log(`TS Function2: ${x} ${y} ${z}`);
 }
-tsFunction2(4,10,"Merhabalar")
+
+//tsFunction2(4,10,"Merhabalar")
 
 
-function tsFunction3(x:any,y:number,z:string){
-    console.log(`TS Function3: ${x} ${y} ${z}`); 
+function tsFunction3(x: any, y: number, z: string) {
+    console.log(`TS Function3: ${x} ${y} ${z}`);
 }
-tsFunction3(44,10,"Merhabalar");
-tsFunction3(true,10,"Merhabalar");
-tsFunction3("Malatya",10,"Merhabalar");
+
+//tsFunction3(44,10,"Merhabalar");
+//tsFunction3(true,10,"Merhabalar");
+//tsFunction3("Malatya",10,"Merhabalar");
 
 // void: geriye bir şey dönderme
-function tsFunction4(x:any,y:number,z:string):void{
-    console.log(`TS Function4: ${x} ${y} ${z}`); 
+function tsFunction4(x: any, y: number, z: string): void {
+    console.log(`TS Function4: ${x} ${y} ${z}`);
 }
-tsFunction4("Malatya",10,"Merhabalar");
 
-function tsFunction5(x:any,y:number,z:string):number{
+//tsFunction4("Malatya",10,"Merhabalar");
+
+function tsFunction5(x: any, y: number, z: string): number {
     //console.log(`TS Function4: ${x} ${y} ${z}`); 
     //return 10;
     //return Number(x)+y+Number(z);
-    return parseInt(x)+y+parseFloat(z);
+    return parseInt(x) + y + parseFloat(z);
 }
 
-const result5=tsFunction5("44",10,"99.12");
-console.log(result5);
+//const result5=tsFunction5("44",10,"99.12");
+//console.log(result5);
 
+// Bitirme Projesini PDF 
 // tsconfig.json
+// tsc -w
 // tsc -w index.ts 
 // nodemon 
 // Web pack 
@@ -197,29 +238,149 @@ console.log(result5);
 // Babil
 // Node JS Server- HTML- Document - URL - EXPRESS
 
-
 // #### ENUM #################################################
 // TypeScript Enum
+let tsEnum = () => {
+
+    // ENUM
+    enum computerTrade {
+        msi = "MSI",
+        dell = "DELL",
+        hp = "HP"
+    }
+
+    console.log(computerTrade.msi);
+    let computerOtherTrade: computerTrade = computerTrade.dell;
+    console.log(computerOtherTrade);
+};
+//tsEnum();
 
 
 // #### CLASS #################################################
 // TypeScript Sınıflar
-// OOP 
-// this,super
+// OOP
+// this
+let tsClass = () => {
+    class Computer {
+        // DATA TYPES
+        _computerName: string;
+        _ram: number;
+        _newVersion: boolean;
 
+        // CONSTRUCTOR
+        constructor(computerName: string, ram: number, newVersion: boolean) {
+            this._computerName = computerName;
+            this._ram = ram;
+            this._newVersion = newVersion;
+        }
 
-// #### GENERICS #################################################
-// TypeScript Generics
+        // FUNCTION
+        computerInformation(): void {
+            let result = `Information => Computer Name: ${this._computerName} Computer Ram: ${this._ram} Computer version: ${this._newVersion}`;
+            console.log(result);
+        } //end function
+    } //end Computer
+
+    // INSTANCE
+    let computerIntance = new Computer("Msi", 8, true);
+    console.log("NAME: " + computerIntance._computerName);
+    console.log("RAM: " + computerIntance._ram);
+    console.log("VERSION: " + computerIntance._newVersion);
+}
+//tsClass()
 
 
 // #### INHERITANCE #################################################
 // TypeScript Inheritance
 // this
 // super
+const tsInheritance = () => {
+
+    // CLASS
+    class Computer {
+        // FIELD
+        _mainCard: string;
+        _cpu: string;
+        _ram: number;
+        _harddisk:string;
+        _newVersion:boolean;
+
+        // CONSTRUCTOR
+        constructor(mainCard:string, cpu:string, ram:number, harddisk:string, newVersion:boolean){
+            this._mainCard=mainCard;
+            this._cpu=cpu;
+            this._ram=ram;
+            this._harddisk=harddisk;
+            this._newVersion=newVersion;
+
+        }
+
+        // FUNCTION
+        computerInformation():void{
+            let result=`Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+            console.log(result);
+        }
+    } //end class Computer
+
+    // 2.CLASS (MSI)
+    class Msi extends Computer{
+        // Field
+        // Constructor
+        // function
+        computerInformation():void{
+            let result=`Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+            console.log(result);
+        }
+    }
+
+     // 3.CLASS (ASUS)
+     class Asus extends Computer{
+        // Field
+        // Constructor
+        // function
+        computerInformation():void{
+            let result=`Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+            console.log(result);
+        }
+    }
+
+    // INTANCE (Computer)
+    const computerInstance=new Computer("Computer","i7",8,"1TB",false);
+    console.log("MAIN CARD: "+ computerInstance._mainCard);
+    console.log("CPU: "+computerInstance._cpu);
+    console.log("RAM: "+computerInstance._ram);
+    console.log("HARD DISK: "+computerInstance._harddisk);
+    console.log("Version: "+computerInstance._newVersion);
+    computerInstance.computerInformation();
+    console.log("**********************************************");
+
+    const msiInstance=new Msi("Msi","i9",16,"4TB",true);
+    console.log("MAIN CARD: "+ msiInstance._mainCard);
+    console.log("CPU: "+msiInstance._cpu);
+    console.log("RAM: "+msiInstance._ram);
+    console.log("HARD DISK: "+msiInstance._harddisk);
+    console.log("Version: "+msiInstance._newVersion);
+    msiInstance.computerInformation();
+    console.log("**********************************************");
+
+    const asusInstance=new Asus("Asus","i9",32,"2TB",false);
+    console.log("MAIN CARD: "+ asusInstance._mainCard);
+    console.log("CPU: "+asusInstance._cpu);
+    console.log("RAM: "+asusInstance._ram);
+    console.log("HARD DISK: "+asusInstance._harddisk);
+    console.log("Version: "+asusInstance._newVersion);
+    asusInstance.computerInformation();
+}
+tsInheritance()
 
 
 // #### ABSTRACT #################################################
 // TypeScript Abstract
+// super
+
+
+// #### GENERICS #################################################
+// TypeScript Generics
 
 
 // #### INTERFACE #################################################
@@ -242,6 +403,3 @@ console.log(result5);
 // TypeScript Inference
 // TypeScript Type Compatibility
 // TypeScript Intersection Types
-
-
-
