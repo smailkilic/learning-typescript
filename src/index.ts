@@ -279,6 +279,7 @@ let tsClass = () => {
             let result = `Information => Computer Name: ${this._computerName} Computer Ram: ${this._ram} Computer version: ${this._newVersion}`;
             console.log(result);
         } //end function
+
     } //end Computer
 
     // INSTANCE
@@ -288,6 +289,10 @@ let tsClass = () => {
     console.log("VERSION: " + computerIntance._newVersion);
 }
 //tsClass()
+
+// #### OPTIONAL #################################################
+// TypeScript Sınıflar
+
 
 
 // #### INHERITANCE #################################################
@@ -302,76 +307,255 @@ const tsInheritance = () => {
         _mainCard: string;
         _cpu: string;
         _ram: number;
-        _harddisk:string;
-        _newVersion:boolean;
+        _harddisk: string;
+        _newVersion: boolean;
 
         // CONSTRUCTOR
-        constructor(mainCard:string, cpu:string, ram:number, harddisk:string, newVersion:boolean){
-            this._mainCard=mainCard;
-            this._cpu=cpu;
-            this._ram=ram;
-            this._harddisk=harddisk;
-            this._newVersion=newVersion;
+        constructor(mainCard: string, cpu: string, ram: number, harddisk: string, newVersion: boolean) {
+            this._mainCard = mainCard;
+            this._cpu = cpu;
+            this._ram = ram;
+            this._harddisk = harddisk;
+            this._newVersion = newVersion;
 
         }
 
         // FUNCTION
-        computerInformation():void{
-            let result=`Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+        computerInformation(): void {
+            let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
             console.log(result);
         }
     } //end class Computer
 
     // 2.CLASS (MSI)
-    class Msi extends Computer{
+    class Msi extends Computer {
         // Field
+        _usb: string;
+
         // Constructor
+        constructor(mainCard: string, cpu: string, ram: number, harddisk: string, newVersion: boolean, usb: string) {
+
+            //super: üst atadan gelen bilgileri gösterir
+            super(mainCard, cpu, ram, harddisk, newVersion)
+
+            //this global state gösterir.
+            this._usb = usb;
+        }
+
         // function
-        computerInformation():void{
-            let result=`Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+        computerInformation(): void {
+            let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion} USB: ${this._usb}`;
             console.log(result);
         }
     }
 
-     // 3.CLASS (ASUS)
-     class Asus extends Computer{
+    // 3.CLASS (ASUS)
+    class Asus extends Computer {
         // Field
+        _typeC: string;
+
         // Constructor
+        constructor(mainCard: string, cpu: string, ram: number, harddisk: string, newVersion: boolean, typeC: string) {
+
+            //super: üst atadan gelen bilgileri gösterir
+            super(mainCard, cpu, ram, harddisk, newVersion)
+
+            //this global state gösterir.
+            this._typeC = typeC;
+        }
+
         // function
-        computerInformation():void{
-            let result=`Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+        computerInformation(): void {
+            let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion} USB: ${this._typeC}`;
             console.log(result);
         }
     }
 
     // INTANCE (Computer)
-    const computerInstance=new Computer("Computer","i7",8,"1TB",false);
-    console.log("MAIN CARD: "+ computerInstance._mainCard);
-    console.log("CPU: "+computerInstance._cpu);
-    console.log("RAM: "+computerInstance._ram);
-    console.log("HARD DISK: "+computerInstance._harddisk);
-    console.log("Version: "+computerInstance._newVersion);
+    const computerInstance = new Computer("Computer", "i7", 8, "1TB", false);
+    console.log("MAIN CARD: " + computerInstance._mainCard);
+    console.log("CPU: " + computerInstance._cpu);
+    console.log("RAM: " + computerInstance._ram);
+    console.log("HARD DISK: " + computerInstance._harddisk);
+    console.log("Version: " + computerInstance._newVersion);
     computerInstance.computerInformation();
     console.log("**********************************************");
 
-    const msiInstance=new Msi("Msi","i9",16,"4TB",true);
-    console.log("MAIN CARD: "+ msiInstance._mainCard);
-    console.log("CPU: "+msiInstance._cpu);
-    console.log("RAM: "+msiInstance._ram);
-    console.log("HARD DISK: "+msiInstance._harddisk);
-    console.log("Version: "+msiInstance._newVersion);
+    // INSTANCE (MSI)
+    const msiInstance = new Msi("Msi", "i9", 16, "4TB", true, "Usb2");
+    console.log("MAIN CARD: " + msiInstance._mainCard);
+    console.log("CPU: " + msiInstance._cpu);
+    console.log("RAM: " + msiInstance._ram);
+    console.log("HARD DISK: " + msiInstance._harddisk);
+    console.log("Version: " + msiInstance._newVersion);
+    console.log("USB: " + msiInstance._usb);
     msiInstance.computerInformation();
     console.log("**********************************************");
 
-    const asusInstance=new Asus("Asus","i9",32,"2TB",false);
-    console.log("MAIN CARD: "+ asusInstance._mainCard);
-    console.log("CPU: "+asusInstance._cpu);
-    console.log("RAM: "+asusInstance._ram);
-    console.log("HARD DISK: "+asusInstance._harddisk);
-    console.log("Version: "+asusInstance._newVersion);
+    // INSTANCE (ASUS)
+    const asusInstance = new Asus("Asus", "i9", 32, "2TB", false, "TypeC");
+    console.log("MAIN CARD: " + asusInstance._mainCard);
+    console.log("CPU: " + asusInstance._cpu);
+    console.log("RAM: " + asusInstance._ram);
+    console.log("HARD DISK: " + asusInstance._harddisk);
+    console.log("Version: " + asusInstance._newVersion);
+    console.log("TypeC: " + asusInstance._typeC);
     asusInstance.computerInformation();
 }
-tsInheritance()
+//tsInheritance();
+
+// #### ACCESS MODIFIER #################################################
+// TypeScript Sınıflar
+// OOP
+// this
+let tsAccessModifierClass = () => {
+    // CLASS
+    class Computer {
+        // Access Modifier 
+        // public : Her yerde erişebilirsiniz (default)
+        // private: Sadece o classta erişim yapabilirsiniz
+        // protected: Eğer extends değilse sadece o classta erişim sağlarsınız
+
+        // FIELD
+        _mainCard: string; // Access: birşey yazmazsam zaten public
+        public _cpu: string;
+        public _ram: number;
+        private _harddisk: string;
+        protected _newVersion: boolean;
+
+        // CONSTRUCTOR
+        constructor(mainCard: string, cpu: string, ram: number, harddisk: string, newVersion: boolean) {
+            this._mainCard = mainCard;
+            this._cpu = cpu;
+            this._ram = ram;
+            this._harddisk = harddisk;
+            this._newVersion = newVersion;
+        }
+
+        // FUNCTION
+        computerInformation(): void {
+            let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+            console.log(result);
+        }
+    } //end class Computer
+
+    // 2.CLASS (MSI)
+    // protected: subClass alanda çalışır.
+    class Msi extends Computer {
+        // Field
+        _usb: string;
+
+        // Constructor
+        constructor(mainCard: string, cpu: string, ram: number, harddisk: string, newVersion: boolean, usb: string) {
+
+            //super: üst atadan gelen bilgileri gösterir
+            super(mainCard, cpu, ram, harddisk, newVersion)
+
+            //this global state gösterir.
+            this._usb = usb;
+        }
+
+        // function
+        computerInformation(): void {
+            let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram}  NewVersion: ${this._newVersion} USB: ${this._usb}`;
+            console.log(result);
+        }
+    }
+
+    // INTANCE (Computer)
+    const computerInstance = new Computer("Computer", "i7", 8, "1TB", false);
+    console.log("MAIN CARD: " + computerInstance._mainCard);
+    console.log("CPU: " + computerInstance._cpu);
+    console.log("RAM: " + computerInstance._ram);
+    //console.log("HARD DISK: " + computerInstance._harddisk);
+    //console.log("Version: " + computerInstance._newVersion);
+    computerInstance.computerInformation();
+    console.log("**********************************************");
+
+    // INSTANCE (MSI)
+    const msiInstance = new Msi("Msi", "i9", 16, "4TB", true, "Usb2");
+    console.log("MAIN CARD: " + msiInstance._mainCard);
+    console.log("CPU: " + msiInstance._cpu);
+    console.log("RAM: " + msiInstance._ram);
+    //console.log("HARD DISK: " + msiInstance._harddisk);
+    //console.log("Version: " + msiInstance._newVersion);
+    console.log("USB: " + msiInstance._usb);
+    msiInstance.computerInformation();
+    console.log("**********************************************");
+
+
+    // console.log("RAM: " + computerIntance._ram); //private: sadece o classta çalışır
+    // console.log("VERSION: " + computerIntance._newVersion); // protected extends değilse sadece o classta çalışır
+}
+tsAccessModifierClass()
+
+
+// #### ENCAPSULATION #################################################
+// Encapsulation: private
+/*
+ Encapsulation(Kapsulleme) bir sınıf içerisinde bazı verileri erişim kısıtlaması getirir.
+Amaç: Verinin dış dünyalayla kapalı olmasını sağlamak ancak sadece bizim belirlediğimiz arayüzde kullanabilelim.
+Encapsulation Kısaca: iç yapısı dış dünyayadan gizlenir. böylelikle veri güvenliğini sağlamış oluruz.
+ */
+
+let tsEncapsulationClass = () => {
+    // CLASS
+    class Computer {
+
+        // FIELD
+        _mainCard: string; // Access: birşey yazmazsam zaten public
+        public _cpu: string;
+        public _ram: number;
+        public _harddisk: string;
+        private _newVersion: boolean;
+
+        // CONSTRUCTOR
+        constructor(mainCard: string, cpu: string, ram: number, harddisk: string, newVersion: boolean) {
+            this._mainCard = mainCard;
+            this._cpu = cpu;
+            this._ram = ram;
+            this._harddisk = harddisk;
+            this._newVersion = newVersion;
+        }
+
+        // ENCAPSULATION (private)
+        // GET (Veriyi getir, okuma) 
+        // GET: veri döndeririz
+        get encapsulationNewVersion(): boolean {
+            return this._newVersion;
+        }
+
+        // SET (Veriyi manipulation, yani değiştirme)
+        // SET: veri dönderilmezzzz
+        set encapsulationNewVersion(version: boolean){
+            this._newVersion = version;
+        }
+
+        // FUNCTION
+        computerInformation(): void {
+            let result = `Information => MainCard: ${this._mainCard} Cpu: ${this._cpu} Ram: ${this._ram} Harddisk: ${this._harddisk} NewVersion: ${this._newVersion}`;
+            console.log(result);
+        }
+    } //end class Computer
+
+
+    // INTANCE (Computer)
+    const computerInstance = new Computer("Computer", "i7", 8, "1TB", false);
+    console.log("MAIN CARD: " + computerInstance._mainCard);
+    console.log("CPU: " + computerInstance._cpu);
+    console.log("RAM: " + computerInstance._ram);
+    console.log("HARD DISK: " + computerInstance._harddisk);
+    // private böyle yazamazsınız sadece encapsulation olarak private kullanabilirsin.
+    // Encapsulation(SET)
+    computerInstance.encapsulationNewVersion=true;
+    // Encapsulation(GET)
+    console.log("Version: " + computerInstance.encapsulationNewVersion);
+    
+    //console.log("Version: " + computerInstance._newVersion);
+    computerInstance.computerInformation();
+    console.log("**********************************************");
+}
+tsEncapsulationClass()
 
 
 // #### ABSTRACT #################################################
